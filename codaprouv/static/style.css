@@ -10,4 +10,12 @@
 body {
    
 }
+
+.center input, .center button {
+	display: block; 
+	margin: auto;	
+	margin-top: 10px; 
+}
+
+
     

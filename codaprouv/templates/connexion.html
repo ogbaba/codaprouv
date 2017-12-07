@@ -2,15 +2,16 @@
 {% include "header.html" %}
 
 <section id="bod">
-  <h2>Connexion</h2>
-  <form method="post">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Utilisateur"/>
-    <input type="password" name="password" placeholder="Mot de passe"/>
-    <button type="submit">Se connecter</button>
-    {{ form.as_p }}
-    
-  </form>
+	<div class="center">
+	  <h2>Connexion</h2>
+	  <form method="post">
+	    {% csrf_token %}
+	    <input class = "inline" type="text" name="username" placeholder="Utilisateur"/>
+	    <input class="inline" type="password" name="password" placeholder="Mot de passe"/>
+	    <button type="submit">Se connecter</button>
+	    {{ form.as_p }}
+	  </form>
+  </div>
 </section>
 
 {% include "fin.html" %}
