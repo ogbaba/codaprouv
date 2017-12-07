@@ -1,0 +1,17 @@
+{% include "debut.html" %}
+{% include "header.html" %}
+
+
+<section id="bod">
+{% block content %}
+  <h2>Inscription</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Inscription</button>
+  </form>
+{% endblock %}
+
+</div>
+
+{% include "fin.html" %}
