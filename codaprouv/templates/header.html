@@ -1,9 +1,11 @@
 <header>
-  <h1>Codaprouv</h1>
+  <a href="/"><h1>Codaprouv</h1></a>
 
   {% if request.user.is_authenticated %}
-  <span>Connecté en tant que {{ request.user.username }}</span>
-  <a href="/deconnexion">Déconnexion</a>
+  <div class="alignCenterPadding">
+    <span>Connecté en tant que {{ request.user.username }}</span>
+    <a href="/deconnexion">Déconnexion</a>
+  </div>
   {% else %}
   <div class="center">
     <ul>

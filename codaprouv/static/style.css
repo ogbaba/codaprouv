@@ -1,5 +1,4 @@
 #bod, header {
-    display: block;
     width: 700px;
     border-style: solid;
     margin-top: 20px;
@@ -7,6 +6,11 @@
     margin-left: auto;
     margin-right: auto;
     background-color: WhiteSmoke;
+    box-shadow: 5px 6px 5px rgba(0,0,0,0.2);
+}
+
+header {
+    display: block;
 }
 
 body {
@@ -14,7 +18,7 @@ body {
    
 }
 
-.center h2 {
+h2, .alignText {
 	text-align: center;
 }
 
@@ -24,13 +28,13 @@ body {
 	margin-top: 10px; 
 }
 
-ul{
+.center ul{
 	display: block;
 	padding-left: 35%;
 	margin-bottom: 10px;
 }
 
-li {
+.center li {
 	display: inline;
 	margin-left: 20;
 	text-align: center;
@@ -40,4 +44,30 @@ h1 {
 	text-align: center;
 }
 
-    
+.helptext {
+	display: block;
+	margin: auto;
+	padding-left: 50px;
+}
+label {
+	padding-left: 30px;
+
+}
+#bod li, .helptext {
+	color: rgba(228,0,6,0.7);
+}  
+
+button {
+	display: block;
+	margin: auto;
+}  
+
+a {
+	text-decoration: none;
+}
+
+.alignCenterPadding {
+	text-align: center;
+	margin-bottom: 20px;
+
+}
