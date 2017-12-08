@@ -1,0 +1,14 @@
+{% include "debut.html" %}
+{% include "header.html" %}
+
+<div id="bod">
+  <h2>Soumettre votre code</h2>
+  <form method='post'>
+    {% csrf_token %}
+    {{ form }}
+    <br/>
+    <input type="submit" value="Envoyer">
+  </form>
+</div>
+
+{% include "fin.html" %}

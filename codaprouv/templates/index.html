@@ -1,10 +1,16 @@
 {% include "debut.html" %}
 {% include "header.html" %}
 
-<div id="bod">
-  <h2>Faites approuver votre code</h2>
-  <p>Bienvenue sur ce site créé lors de la nuit de
-  l'info, amusez vous bien !</p>
-</div>
-
+<section id="bod">
+  <h2>Le Codaprouv</h2>
+  <p> Bienvenue à vous, vous pourrez ici donner vos avis
+    sur le code des gens et recevoir des avis !</p>
+  
+  {% if request.user.is_authenticated %}
+  <a href="/codiller">Soumettre votre code</a><br/>
+  <a href="/valider">Valider du code</a><br/>
+  {% else %}
+  <i>Connectez vous pour accéder aux fonctionnalités...</i>
+  {% endif %}
+</section>
 {% include "fin.html" %}

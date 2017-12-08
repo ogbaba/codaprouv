@@ -22,4 +22,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^connexion/$', views.connexion, name='connexion'),
     url(r'^inscription/$', views.inscription, name='inscription'),
+    url(r'^codiller/$', views.codiller, name='codiller'),
+    url(r'^valider/$', views.valider, name='valider'),
 ]
