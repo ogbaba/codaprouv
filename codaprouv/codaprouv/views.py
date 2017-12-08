@@ -52,7 +52,7 @@ class FormAvis(forms.Form):
 def valider(request):
     codillons = None
     codillon = None
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         cursor = connection.cursor()
         cursor.execute("select id from codaprouv_codillon where id not in (select codillon_id from codaprouv_avis where codillon_id=" + str(request.user.id) + ") order by RANDOM() limit 1")
         cod_el = cursor.fetchone()
