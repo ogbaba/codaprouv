@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^valider/$', views.valider, name='valider'),
     url(r'^moncode/$', views.moncode, name='moncode'),
     url(r'^deconnexion/$', views.deconnexion, name='deconnexion'),
+    url(r'^moncode/codillon/(?P<id>[0-9]+)/$', views.codillon, name='codillon'),
 ]

@@ -1,0 +1,21 @@
+{% include "debut.html" %}
+{% include "header.html" %}
+
+<div id="bod">
+  <h2>Mon code</h2>
+  <h3>
+    {{ codillon.nom }}
+  </h3>
+  <code>
+    {{ codillon.donnees }}
+  </code> <br/>
+  <b>Note totale : {{ note_totale }}</b><br/>
+  <br/>
+  {% for avis in liste_avis %}
+  <p> <b>Par {{ avis.auteur }}, Note : {{ avis.avis }} </b><br/>
+    {{ avis.commentaire }}
+  <p>
+  {% endfor %}
+</div>
+
+{% include "fin.html" %}

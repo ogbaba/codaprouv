@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import connection
 from django import forms
-from django.db.models import Count
+from django.shortcuts import get_object_or_404
+from django.db.models import Count, Sum
 import datetime
 from .models import *
 
@@ -53,10 +54,11 @@ def valider(request):
     if request.user.is_authenticated():
         cursor = connection.cursor()
         cursor.execute("select id from codaprouv_codillon where id not in (select codillon_id from codaprouv_avis where codillon_id=" + str(request.user.id) + ") order by RANDOM() limit 1")
-        codillon_id = int(cursor.fetchone()[0])
+        cod_el = cursor.fetchone()
+        if cod_el is None:
+            return redirect(index)
+        codillon_id = int(cod_el[0])
         codillon = Codillon.objects.get(pk=codillon_id)
-        print("LE CODILLON !!!" + str(codillon))
-        #codillon = Codillon.objects.get(pk=codillon_id)
     if request.method == 'POST':
         form = FormAvis(request.POST)
         if form.is_valid() and request.user.is_authenticated:
@@ -86,3 +88,14 @@ def codiller(request):
 def moncode(request):
     codillons = Codillon.objects.all()
     return render(request, 'moncode.html', {'codillons':codillons})
+
+def codillon(request, id):
+    codillon = get_object_or_404(Codillon, pk=id)
+    liste_avis = Avis.objects.all().filter(codillon_id=id)
+    note_totale = liste_avis.aggregate(Sum('avis'))['avis__sum']
+    contexte = {
+        'liste_avis': liste_avis,
+        'codillon': codillon,
+        'note_totale': note_totale,
+    }
+    return render(request, 'codillon.html', contexte);
