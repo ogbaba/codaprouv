@@ -8,6 +8,7 @@ class Codillon (models.Model):
     createur = models.ForeignKey(User, on_delete=models.CASCADE)
     donnees = models.CharField(max_length=500)
     date_publi = models.DateField()
+    nom = models.CharField(max_length=30)
 
 class Avis (models.Model):
     codillon = models.ForeignKey('Codillon', on_delete=models.CASCADE)

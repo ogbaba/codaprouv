@@ -1,0 +1,18 @@
+{% include "debut.html" %}
+{% include "header.html" %}
+
+<div id="bod">
+  <h2>Mon code</h2>
+  {% if codillons %}
+  <ul>
+    {% for codillon in codillons %}
+    <li><a href="codillon/{{ codillon.id }}/">{{ codillon.nom }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <i>Vous n'avez pas de codillons...</i>
+  {% endif %}
+  </form>
+</div>
+
+{% include "fin.html" %}

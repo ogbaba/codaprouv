@@ -39,6 +39,7 @@ def deconnexion(request):
     return redirect('index')
 
 class FormCodillon(forms.Form):
+    nom = forms.CharField(max_length=30)
     code = forms.CharField(widget=forms.Textarea,
                            max_length=500)
 
@@ -48,6 +49,7 @@ class FormAvis(forms.Form):
 
 def valider(request):
     codillons = None
+    codillon = None
     if request.user.is_authenticated():
         cursor = connection.cursor()
         cursor.execute("select id from codaprouv_codillon where id not in (select codillon_id from codaprouv_avis where codillon_id=" + str(request.user.id) + ") order by RANDOM() limit 1")
@@ -74,9 +76,13 @@ def codiller(request):
         form = FormCodillon(request.POST)
         if form.is_valid() and request.user.is_authenticated:
             Codillon.objects.create(donnees=form.cleaned_data['code'],
+                                    nom=form.cleaned_data['nom'],
                                 createur=request.user,
                                 date_publi=datetime.datetime.utcnow())
             return redirect(index)
     form = FormCodillon()
     return render(request, 'codiller.html', {'form':form})
 
+def moncode(request):
+    codillons = Codillon.objects.all()
+    return render(request, 'moncode.html', {'codillons':codillons})
