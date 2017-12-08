@@ -85,4 +85,9 @@ textarea {
 }
 .alignText a {
 	display: inherit;
+	padding-bottom: 10px;
+}
+
+i {
+	padding-bottom: 10px;
 }
