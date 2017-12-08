@@ -87,7 +87,7 @@ def codiller(request):
     return render(request, 'codiller.html', {'form':form})
 
 def moncode(request):
-    codillons = Codillon.objects.all()
+    codillons = Codillon.objects.filter(createur_id=request.user.id)
     return render(request, 'moncode.html', {'codillons':codillons})
 
 def codillon(request, id):
