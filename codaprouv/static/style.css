@@ -103,3 +103,7 @@ textarea {
 i {
 	padding-bottom: 10px;
 }
+
+section form {
+	text-align: center;
+}
