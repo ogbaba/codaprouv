@@ -5,9 +5,11 @@
   <span>Connecté en tant que {{ request.user.username }}</span>
   <a href="/deconnexion">Déconnexion</a>
   {% else %}
-  <ul>
-    <li><a class="inline" href="/inscription">inscription</a></li>
-    <li><a class="inline" href="/connexion">connexion</a></li>
-  </ul>
+  <div class="center">
+    <ul>
+      <li><a class="inline" href="/inscription">inscription</a></li>
+      <li><a class="inline" href="/connexion">connexion</a></li>
+    </ul>
+  </div>
   {% endif %}
 </header>
