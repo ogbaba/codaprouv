@@ -4,6 +4,10 @@
 <div id="bod">
   <h2>Valider du code</h2>
   <form method='post'>
+    <b> Posté par {{ codillon.createur }} le {{ codillon.date_publi }} </b>
+    <br/>
+    <code>{{ codillon.donnees }}</code>
+    <br/>
     <input type="submit" value="Beurk !" name="mal"/>
     {% csrf_token %}
     {{ form }}

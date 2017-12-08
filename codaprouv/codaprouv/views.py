@@ -50,31 +50,32 @@ def valider(request):
     codillons = None
     if request.user.is_authenticated():
         cursor = connection.cursor()
-        cursor.execute("select codillon_id, count(*) from codaprouv_avis group by codillon_id having codillon_id not in ( select ca.id from codaprouv_avis ca left join codaprouv_codillon cc on cc.id = "+str(request.user.id)+")")
-        codillons_id = cursor.fetchone()
+        cursor.execute("select id from codaprouv_codillon where id not in (select codillon_id from codaprouv_avis where codillon_id=" + str(request.user.id) + ") order by RANDOM() limit 1")
+        codillon_id = int(cursor.fetchone()[0])
+        codillon = Codillon.objects.get(pk=codillon_id)
+        print("LE CODILLON !!!" + str(codillon))
+        #codillon = Codillon.objects.get(pk=codillon_id)
     if request.method == 'POST':
         form = FormAvis(request.POST)
         if form.is_valid() and request.user.is_authenticated:
             avis_bon=request.POST.get("bon")
             avis_note= 1 if avis_bon else  -1           
-            avis = Avis(commentaire=form.cleaned_data['commentaire'],
+            Avis.objects.create(commentaire=form.cleaned_data['commentaire'],
                         auteur=request.user,
                         avis=avis_note,
-                        codillon=codillons_id,)
-            codillon.save()
+                        codillon=codillon,)
             return redirect(index)
     form = FormAvis()
-    return render(request, 'valider.html', {'form':form})
+    return render(request, 'valider.html', {'form':form, 'codillon':codillon})
 
     
 def codiller(request):
     if request.method == 'POST':
         form = FormCodillon(request.POST)
         if form.is_valid() and request.user.is_authenticated:
-            codillon = Codillon(donnees=form.cleaned_data['code'],
+            Codillon.objects.create(donnees=form.cleaned_data['code'],
                                 createur=request.user,
                                 date_publi=datetime.datetime.utcnow())
-            codillon.save()
             return redirect(index)
     form = FormCodillon()
     return render(request, 'codiller.html', {'form':form})
