@@ -8,13 +8,12 @@
 </div>
 <section id="bod">
   <h2>Le Codaprouv</h2>
-  <p> Bienvenue à vous, vous pourrez ici donner vos avis
+  <p class="alignText"> Bienvenue à vous, vous pourrez ici donner vos avis
     sur le code des gens et recevoir des avis !</p>
   
   {% if request.user.is_authenticated %}
-  <a href="/codiller">Soumettre votre code</a><br/>
-  <a href="/valider">Valider du code</a><br/>
-  <a href="/moncode">Mon code</a>
+  <a class="alignText" href="/codiller">Soumettre votre code</a><br/>
+  <a class="alignText" href="/valider">Valider du code</a><br/>
   {% else %}
   <i>Connectez vous pour accéder aux fonctionnalités...</i>
   {% endif %}

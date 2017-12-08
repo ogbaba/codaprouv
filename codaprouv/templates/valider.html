@@ -3,9 +3,7 @@
 
 <div id="bod">
   <h2>Valider du code</h2>
-  {% if request.user.is_authenticated %}
   <form method='post'>
-    <h3> {{ codillon.nom }} </h3> <br/>
     <b> Posté par {{ codillon.createur }} le {{ codillon.date_publi }} </b>
     <br/>
     <code>{{ codillon.donnees }}</code>
@@ -15,9 +13,6 @@
     {{ form }}
     <input type="submit" value="Miam !" name="bon"/>
   </form>
-  {% else %}
-  <i>Vous devez être connecté</i>
-  {% endif %}
 </div>
 
 {% include "fin.html" %}
