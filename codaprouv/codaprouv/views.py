@@ -54,7 +54,7 @@ def valider(request):
     codillon = None
     if request.user.is_authenticated:
         cursor = connection.cursor()
-        cursor.execute("select id from codaprouv_codillon where id not in (select codillon_id from codaprouv_avis where codillon_id=" + str(request.user.id) + ") order by RANDOM() limit 1")
+        cursor.execute("select codaprouv_codillon.id from codaprouv_codillon where codaprouv_codillon.id not in (select codillon_id from codaprouv_avis ca join codaprouv_codillon cc on cc.id = ca.codillon_id where cc.createur_id="+ str(request.user.id) + " or ca.auteur_id="+str(request.user.id) +") order by RANDOM() limit 1")
         cod_el = cursor.fetchone()
         if cod_el is None:
             return redirect(index)
