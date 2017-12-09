@@ -43,7 +43,7 @@ def deconnexion(request):
 class FormCodillon(forms.Form):
     nom = forms.CharField(max_length=30)
     code = forms.CharField(widget=forms.Textarea,
-                           max_length=500)
+                           max_length=2000)
 
 class FormAvis(forms.Form):
     commentaire = forms.CharField(widget=forms.Textarea,

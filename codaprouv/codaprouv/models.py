@@ -6,7 +6,7 @@ MAUV_AVIS = -1;
 
 class Codillon (models.Model):
     createur = models.ForeignKey(User, on_delete=models.CASCADE)
-    donnees = models.CharField(max_length=500)
+    donnees = models.CharField(max_length=2000)
     date_publi = models.DateField()
     nom = models.CharField(max_length=30)
 
