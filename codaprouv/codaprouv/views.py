@@ -69,7 +69,7 @@ def valider(request):
                         auteur=request.user,
                         avis=avis_note,
                         codillon=codillon,)
-            return redirect(index)
+            return redirect(valider)
     form = FormAvis()
     return render(request, 'valider.html', {'form':form, 'codillon':codillon})
 
